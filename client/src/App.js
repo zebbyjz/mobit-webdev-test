@@ -1,13 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
 import React from 'react';
-import Landing from './Pages/Landing';
+import AddUser from './Pages/AddUser';
 
 function App() {
   return (
     <React.Fragment>
       
-        <Landing></Landing>
+        <AddUser/>
       
     </React.Fragment>
   );
