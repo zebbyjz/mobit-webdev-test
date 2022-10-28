@@ -2,12 +2,14 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import AddUser from './Pages/AddUser';
+import TestPage from './Pages/TestPage';
 
 function App() {
   return (
     <React.Fragment>
       
-        <AddUser/>
+        {<AddUser/>}
+        {/*<TestPage></TestPage>*/}
       
     </React.Fragment>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import SideBar from "../Components/SideBar";
+import axios from 'axios'
 
 function AddUser() {
   const defaultSchema = {
@@ -9,6 +10,8 @@ function AddUser() {
     Age: "",
     errors: { Email: 0, Age: 0 },
   };
+
+
   const [fields, setFields] = useState(defaultSchema);
 
   const input_schema = [
@@ -52,7 +55,23 @@ function AddUser() {
 
   const onSubmitUser = (event) => {
     event.preventDefault();
-    alert("Form Submitted Successfully");
+
+    //Making local copy of form data and deleting errors property so we only get user info
+    let entry = { ...fields };
+    delete entry.errors;
+    
+
+    let url = "http://localhost:5000/api/post";
+    axios
+      .post(url, entry)
+      .then((res) => {
+        console.log(res);
+        alert("Form Submitted Successfully");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Sorry, some error has occurred in the form submission.");
+      });
   };
 
   const handleChange = (event) => {
