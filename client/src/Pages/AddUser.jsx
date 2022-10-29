@@ -115,7 +115,7 @@ function AddUser() {
   return (
     <React.Fragment>
       <div className="d-flex flex-row">
-        <SideBar at="add"></SideBar>
+        <SideBar></SideBar>
 
         <div className="container mt-5 ms-5" style={{ width: "30%" }}>
           <h1 className="mb-5">User Form Details</h1>

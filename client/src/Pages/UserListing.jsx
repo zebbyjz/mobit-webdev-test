@@ -4,7 +4,7 @@ import SideBar from '../Components/SideBar';
 function UserListing() {
     return ( 
         <React.Fragment>
-            <SideBar at="list"></SideBar>
+            <SideBar></SideBar>
             <h1>hello</h1>
         </React.Fragment>
      );
