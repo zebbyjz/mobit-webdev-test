@@ -5,7 +5,10 @@ import axios from 'axios'
 
 function UserListing() {
     const[data,setData]=useState();
+    const[searchedData,setSearchedData]=useState("mewo");
     const[isLoading,setLoading]=useState(true);
+    const[isChecked,setChecked]=useState(true)
+    const[search,setSearch]=useState("")
     let url="http://localhost:5000/api/getUsers";
     
     const fetchData = async () => {
@@ -19,9 +22,40 @@ function UserListing() {
     };
 
 
+    const fetchSearchData=async(searchParam)=>{
+        let searchURL=`http://localhost:5000/api/getUsers?name=${searchParam}`
+        await axios.get(searchURL).then((res)=>{
+            setSearchedData(res.data)
+            setData(res.data)
+        })
+        .catch((error)=>{
+            console.log(error.message)
+            alert("Error occurred during search")
+        })
+    }
+
+
     useEffect(() => {
       fetchData();
-    }, []);
+    }, [isChecked]);
+
+
+    const handleSearch=()=>{
+        setChecked(false)
+        fetchSearchData(search)
+
+    }
+
+    const onTextChange=(event)=>{
+        let {value}=event.target
+        setSearch(value)
+        setChecked(false)
+    }
+
+    const handleCheckboxToggle=()=>{
+        setChecked(!isChecked)
+        setSearch("")
+    }
     
     if(isLoading){return(<React.Fragment>
         <div className="d-flex flex-row">
@@ -38,11 +72,11 @@ function UserListing() {
             <div className="d-flex flex-row">
             <SideBar></SideBar>
             
-            <div className="d-grid m-5 " style={{ width: "100%" }}>
+            <div className="d-grid m-5" style={{ width: "100%" }}>
             
 
-            <div className="accordion w-100" id="accordionExample">
-            <div className="accordion-item">
+            <div className="accordion w-100 " id="accordionExample">
+            <div className="accordion-item shadow-lg">
                 <h2 className="accordion-header" id="headingOne">
                     <button className="w-100 accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                         Display Users (CLICK HERE)
@@ -52,13 +86,13 @@ function UserListing() {
                     <div className="accordion-body">
                         <ul className="pt-5" style={{width:"75vw"}}>
                             <div className="form-check ms-3 mb-3">
-                                <input className="form-check-input mt-1" type="checkbox" value="" id="flexCheckChecked" checked/>
-                                <label  className='form-check-label' htmlFor="flexCheckChecked fs-1">Show All Records</label>
+                                <input className="form-check-input mt-1" type="checkbox" value="" id="flexCheckChecked" checked={isChecked} onChange={handleCheckboxToggle}/>
+                                <label  className='form-check-label' htmlFor="flexCheckChecked">Show All Records</label>
                             </div>
                             
                             <div className='d-flex flex-row'>
-                                <input type="text" className='form-control ms-3 me-5' placeholder='Search for specific name'/>
-                                <button className='btn btn-primary me-5' style={{width:"12em"}}><i className="bi bi-search pe-none me-2"></i>Search</button>
+                                <input type="text" className='form-control ms-3 me-5' placeholder='Search for specific name' value={search} onChange={(event)=>{onTextChange(event)}}/>
+                                <button className='btn btn-primary me-5' style={{width:"12em"}} onClick={handleSearch}><i className="bi bi-search pe-none me-2"></i>Search</button>
                             </div>
                             <hr/>
                             <div className='MYTABLE'>
