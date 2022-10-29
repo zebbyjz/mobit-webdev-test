@@ -69,8 +69,8 @@ function AddUser() {
         alert("Form Submitted Successfully");
       })
       .catch((error) => {
-        console.log(error);
-        alert("Sorry, some error has occurred in the form submission.");
+        console.log(error.response);
+        alert(`Sorry, some error has occurred in the form submission. \nReason: ${error.response.data.message}`);
       });
   };
 

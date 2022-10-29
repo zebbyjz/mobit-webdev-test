@@ -21,6 +21,9 @@ router.post("/post", async (req, res) => {
   });
 
   try {
+    const checkDuplicate= await Model.find().where("Email").equals(email)
+    if(checkDuplicate.length>0) throw {name : "DuplicateEmail", message : "Email Already Exists in Database"}; 
+
     const dataToSave = await data.save();
     res.status(200).json(dataToSave);
   } catch (error) {
