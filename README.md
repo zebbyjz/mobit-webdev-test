@@ -6,6 +6,7 @@ Assessment for GoMobit LLC.
 
 ## Server Commands
 In client folder: npm start
+
 In server folder: npm run dev
 
 
