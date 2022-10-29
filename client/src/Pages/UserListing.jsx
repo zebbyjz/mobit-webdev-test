@@ -133,40 +133,42 @@ function UserListing() {
                       </div>
                       <hr />
                       <div className="MYTABLE">
-                        <table className="table table-bordered">
-                          <thead>
-                            <tr>
-                              <th className="text-center">ID</th>
-                              <th className="text-center">Name</th>
-                              <th className="text-center">Email</th>
-                              <th className="text-center">Cell Number</th>
-                              <th className="text-center">Created At</th>
-                              <th className="text-center">Is Deleted</th>
-                            </tr>
-                          </thead>
-                          <tbody className="table-group-divider">
-                            {data.map((record) => {
-                              return (
-                                <tr key={record._id}>
-                                  <td className="text-center">{record._id}</td>
-                                  <td className="text-center">{record.Name}</td>
-                                  <td className="text-center">
-                                    {record.Email}
-                                  </td>
-                                  <td className="text-center">
-                                    {record["Mobile Number"]}
-                                  </td>
-                                  <td className="text-center">
-                                    {new Date(
-                                      record.createdAt
-                                    ).toLocaleString()}
-                                  </td>
-                                  <td className="text-center">{"No"}</td>
+                        <div className="table-responsive">
+                            <table className="table table-bordered">
+                              <thead>
+                                <tr>
+                                  <th className="text-center">ID</th>
+                                  <th className="text-center">Name</th>
+                                  <th className="text-center">Email</th>
+                                  <th className="text-center">Cell Number</th>
+                                  <th className="text-center">Created At</th>
+                                  <th className="text-center">Is Deleted</th>
                                 </tr>
-                              );
-                            })}
-                          </tbody>
-                        </table>
+                              </thead>
+                              <tbody className="table-group-divider">
+                                {data.map((record) => {
+                                  return (
+                                    <tr key={record._id}>
+                                      <td className="text-center">{record._id}</td>
+                                      <td className="text-center">{record.Name}</td>
+                                      <td className="text-center">
+                                        {record.Email}
+                                      </td>
+                                      <td className="text-center">
+                                        {record["Mobile Number"]}
+                                      </td>
+                                      <td className="text-center">
+                                        {new Date(
+                                          record.createdAt
+                                        ).toLocaleString()}
+                                      </td>
+                                      <td className="text-center">{"No"}</td>
+                                    </tr>
+                                  );
+                                })}
+                              </tbody>
+                            </table>
+                        </div>
                       </div>
                     </ul>
                   </div>
