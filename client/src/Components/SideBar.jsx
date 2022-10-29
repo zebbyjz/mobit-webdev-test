@@ -16,13 +16,13 @@ function SideBar(props) {
 <hr></hr>
 <ul className='nav nav-pills flex-column mb-auto'>
     <li className={"nav-item"}>
-        <Link to="/" className="nav-link active">
+        <Link to="/" className="nav-link">
         <i className="bi bi-person-plus-fill pe-none me-2"></i>
         Add User
         </Link>
     </li>
     <li className="nav-item">
-        <Link to="/list" className="nav-item">
+        <Link to="/list" className="nav-link">
         <i className="bi bi-people-fill pe-none me-2"></i>
         View Users
         </Link>
