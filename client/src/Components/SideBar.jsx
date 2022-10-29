@@ -1,7 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
-function SideBar() {
+
+function SideBar(props) {
+
+    const styleActive=' active';
+
     return (
         <React.Fragment>
 
@@ -10,17 +15,17 @@ function SideBar() {
 <span className="fs-4">Menu</span>
 <hr></hr>
 <ul className='nav nav-pills flex-column mb-auto'>
-    <li className="nav-item">
-        <a href='' className="nav-link active">
+    <li className={"nav-item"}>
+        <Link to="/" className="nav-link active">
         <i className="bi bi-person-plus-fill pe-none me-2"></i>
         Add User
-        </a>
+        </Link>
     </li>
     <li className="nav-item">
-        <a  href='' className="nav-link">
-            <i className="bi bi-people-fill pe-none me-2"></i>
-            View Users
-        </a>
+        <Link to="/list" className="nav-item">
+        <i className="bi bi-people-fill pe-none me-2"></i>
+        View Users
+        </Link>
     </li>
     
 </ul>
